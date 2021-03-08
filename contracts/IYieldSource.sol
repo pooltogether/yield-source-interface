@@ -13,8 +13,9 @@ interface IYieldSource {
   /// @return The underlying balance of asset tokens
   function balanceOf(address addr) external returns (uint256);
 
-  /// @notice Supplies asset tokens to the yield source.
+  /// @notice Supplies asset tokens to the yield source.  Allows assets to be supplied on other user's behalf using the `to` param.
   /// @param mintAmount The amount of asset tokens to be supplied
+  /// @param to The user whose balance will receive the tokens
   function supplyTo(uint256 mintAmount, address to) external;
 
   /// @notice Redeems asset tokens from the yield source.
