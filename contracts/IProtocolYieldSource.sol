@@ -5,6 +5,7 @@ pragma solidity >=0.7.0 <0.8.0;
 import "./IYieldSource.sol";
 import "./IReserve.sol";
 
+/// @title The interface used for all Yield Sources for the PoolTogether protocol
 interface ProtocolYieldSource is IYieldSource {
 
   /// @notice Sets the Reserve strategy on this contract
@@ -15,7 +16,7 @@ interface ProtocolYieldSource is IYieldSource {
   /// @return The current reserve strategy for this contract
   function reserve() external view returns (IReserve);
 
-  /// @notice Transfers tokens from the reserve to the given address
+  /// @notice Transfers tokens from the reserve to the given address.  The tokens should be the same tokens as the token() function
   /// @param to The address to transfer reserve tokens to.
   function transferReserve(address to) external;
 
@@ -32,7 +33,7 @@ interface ProtocolYieldSource is IYieldSource {
   /// @param tokenId The ERC721 token id to transfer
   function transferERC721(address token, address to, uint256 tokenId) external;
 
-  /// @notice Allows someone to deposit into the yield source without receiving any shares.
+  /// @notice Allows someone to deposit into the yield source without receiving any shares.  The deposited token will be the same as token()
   /// This allows anyone to distribute tokens among the share holders.
   function sponsor(uint256 amount) external;
 }
