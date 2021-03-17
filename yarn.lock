@@ -967,6 +967,11 @@ growl@1.10.5:
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.10.5.tgz#f2735dc2283674fa67478b10181059355c369e5e"
   integrity sha512-qBr4OuELkhPenW6goKVXiv47US3clb3/IbuWF9KNKEijAy9oeHxU9IgzjvJhHkUzhaj7rOUD7+YGWqUjLp5oSA==
 
+hardhat-abi-exporter@^2.0.8:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/hardhat-abi-exporter/-/hardhat-abi-exporter-2.2.0.tgz#fc5b4c4cb7441fe2b65a1fd2f2e2c9dede624f60"
+  integrity sha512-rr3Sm8NnGTwfwnM65PQrs1x5z7A4P3Xs2MNMdnCWheQrsD/uPl0RnN+r3vo2GbLxauZ0xHbvWMfXvrgrd4WCEw==
+
 hardhat@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/hardhat/-/hardhat-2.1.1.tgz#bcfed980019672b57011845a1678f714728d6ee7"
