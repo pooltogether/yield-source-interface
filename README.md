@@ -11,13 +11,11 @@ Keep in mind:
 - All deposits are denominated in the `depositToken()` ERC20.
 - The `balanceOfToken(address)` function is similar to the Aave aToken, in that the balance must always increase.
 
-## Implementation Requirements
+# Implementations
 
-- Delivered as a Github repository
-- Readme documents how to setup and run tests
-- Uses Hardhat as development framework.
-- Uses hardhat-deploy to deploy contracts
-- Tests must have 95% code coverage
-- All public members documented using Natspec
-- Code adheres to standard Solhint configuration (should be part of test command)
-- For an example, see the [PoolTogether Pool Contracts](https://github.com/pooltogether/pooltogether-pool-contracts)
+**Note: these implementations may or may not have been audited.**  They should be considered experimental until proven otherwise.
+
+- [Compound cToken Yield Source](https://github.com/pooltogether/pooltogether-pool-contracts/blob/f3c40ecacc654caa323f956f91e9851703a73111/contracts/yield-source/CTokenYieldSource.sol)
+- [Aave aToken Yield Source](https://github.com/pooltogether/aave-yield-source)
+- [xSushi Yield Source](https://github.com/steffenix/sushi-pooltogether)
+- [Yearn V2 Vault Yield Source](https://github.com/jmonteer/pooltogether-YSyearnV2)
