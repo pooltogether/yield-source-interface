@@ -18,4 +18,4 @@ Keep in mind:
 - [Compound cToken Yield Source](https://github.com/pooltogether/pooltogether-pool-contracts/blob/f3c40ecacc654caa323f956f91e9851703a73111/contracts/yield-source/CTokenYieldSource.sol)
 - [Aave aToken Yield Source](https://github.com/pooltogether/aave-yield-source)
 - [xSushi Yield Source](https://github.com/steffenix/sushi-pooltogether)
-- [Yearn V2 Vault Yield Source](https://github.com/jmonteer/pooltogether-YSyearnV2)
+- [Yearn V2 Vault Yield Source](https://github.com/pooltogether/pooltogether-yearnv2-yield-source)
