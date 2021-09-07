@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/yield-source-interface",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -12,5 +12,13 @@
   "devDependencies": {
     "hardhat": "2.6.0",
     "hardhat-abi-exporter": "2.2.1"
-  }
+  },
+  "files": [
+    "LICENSE",
+    "abis/**",
+    "artifacts/**",
+    "contracts/**",
+    "deployments/**",
+    "deploy/**"
+  ]
 }
