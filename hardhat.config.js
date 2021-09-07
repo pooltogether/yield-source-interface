@@ -4,7 +4,30 @@ require('hardhat-abi-exporter')
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.4.22",
+  solidity: {
+    compilers: [
+      {
+        version: '0.4.22',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+          evmVersion: 'berlin',
+        },
+      },
+      {
+        version: '0.8.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+          evmVersion: 'berlin',
+        },
+      },
+    ],
+  },
   abiExporter: {
     path: './abis',
     clear: true,
