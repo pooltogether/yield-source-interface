@@ -1,6 +1,6 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.4.0;
+pragma solidity >=0.6.0;
 
 /// @title Defines the functions used to interact with a yield source.  The Prize Pool inherits this contract.
 /// @notice Prize Pools subclasses need to implement this interface so that yield can be generated.
