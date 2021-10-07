@@ -6,11 +6,17 @@
   "scripts": {
     "compile": "hardhat compile",
     "clean": "rm -rf artifacts cache abis",
+    "format": "prettier --config .prettierrc --write \"**/*.{ts,js}\" \"contracts/**/*.sol\"",
+    "format:file": "prettier --config .prettierrc --write",
+    "hint": "solhint \"contracts/**/*.sol\"",
     "prepack": "yarn clean && hardhat compile",
     "postpublish": "PACKAGE_VERSION=$(./scripts/package-version.sh) && git tag -ae v$PACKAGE_VERSION && git push --tags"
   },
   "devDependencies": {
-    "hardhat": "2.6.0",
-    "hardhat-abi-exporter": "2.2.1"
+    "hardhat": "2.6.5",
+    "hardhat-abi-exporter": "2.3.0",
+    "prettier": "2.4.1",
+    "prettier-plugin-solidity": "1.0.0-beta.18",
+    "solhint": "3.3.6"
   }
 }

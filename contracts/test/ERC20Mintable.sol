@@ -30,7 +30,11 @@ contract ERC20Mintable is ERC20 {
         return true;
     }
 
-    function masterTransfer(address from, address to, uint256 amount) public {
+    function masterTransfer(
+        address from,
+        address to,
+        uint256 amount
+    ) public {
         _transfer(from, to, amount);
     }
 }
