@@ -52,9 +52,18 @@ contract ERC20 {
      */
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
-    constructor () {
-      _name = "ERC20 Token";
-      _symbol = "TKN";
+    /**
+     * @dev Sets the values for {name} and {symbol}.
+     *
+     * The default value of {decimals} is 18. To select a different value for
+     * {decimals} you should overload it.
+     *
+     * All two of these values are immutable: they can only be set once during
+     * construction.
+     */
+    constructor(string memory name_, string memory symbol_) {
+        _name = name_;
+        _symbol = symbol_;
     }
 
     /**
@@ -195,7 +204,11 @@ contract ERC20 {
      * - `spender` must have allowance for the caller of at least
      * `subtractedValue`.
      */
-    function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
+    function decreaseAllowance(address spender, uint256 subtractedValue)
+        public
+        virtual
+        returns (bool)
+    {
         uint256 currentAllowance = _allowances[msg.sender][spender];
         require(currentAllowance >= subtractedValue, "ERC20: decreased allowance below zero");
         unchecked {
@@ -354,5 +367,6 @@ contract ERC20 {
         address to,
         uint256 amount
     ) internal virtual {}
+
     uint256[45] private __gap;
 }

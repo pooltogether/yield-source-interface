@@ -1,4 +1,6 @@
-pragma solidity 0.8.6;
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.6.0;
 
 import "./ERC20.sol";
 
@@ -9,6 +11,7 @@ import "./ERC20.sol";
  * At construction, the deployer of the contract is the only minter.
  */
 contract ERC20Mintable is ERC20 {
+    constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {}
 
     /**
      * @dev See {ERC20-_mint}.
@@ -27,7 +30,11 @@ contract ERC20Mintable is ERC20 {
         return true;
     }
 
-    function masterTransfer(address from, address to, uint256 amount) public {
+    function masterTransfer(
+        address from,
+        address to,
+        uint256 amount
+    ) public {
         _transfer(from, to, amount);
     }
 }
