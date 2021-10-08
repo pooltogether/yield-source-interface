@@ -14,8 +14,12 @@ import "./ERC20Mintable.sol";
 contract MockYieldSource is ERC20, IYieldSource {
     ERC20Mintable public token;
 
-    constructor(string memory _name, string memory _symbol) ERC20("YIELD", "YLD") {
-        token = new ERC20Mintable(_name, _symbol);
+    constructor(
+        string memory _name,
+        string memory _symbol,
+        uint8 _decimals
+    ) ERC20("YIELD", "YLD", 18) {
+        token = new ERC20Mintable(_name, _symbol, _decimals);
     }
 
     function yield(uint256 amount) external {
