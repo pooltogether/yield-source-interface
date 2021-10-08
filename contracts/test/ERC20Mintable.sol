@@ -11,7 +11,11 @@ import "./ERC20.sol";
  * At construction, the deployer of the contract is the only minter.
  */
 contract ERC20Mintable is ERC20 {
-    constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {}
+    constructor(
+        string memory _name,
+        string memory _symbol,
+        uint8 _decimals
+    ) ERC20(_name, _symbol, _decimals) {}
 
     /**
      * @dev See {ERC20-_mint}.

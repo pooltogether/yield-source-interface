@@ -1,8 +1,8 @@
 {
   "name": "@pooltogether/yield-source-interface",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "scripts": {
     "compile": "hardhat compile",
     "clean": "rm -rf artifacts cache abis",
@@ -18,5 +18,13 @@
     "prettier": "2.4.1",
     "prettier-plugin-solidity": "1.0.0-beta.18",
     "solhint": "3.3.6"
-  }
+  },
+  "files": [
+    "LICENSE",
+    "abis/**",
+    "artifacts/**",
+    "contracts/**",
+    "deployments/**",
+    "deploy/**"
+  ]
 }
