@@ -1,4 +1,5 @@
 require('hardhat-abi-exporter');
+require('hardhat-deploy-ethers');
 
 /**
  * @type import('hardhat/config').HardhatUserConfig

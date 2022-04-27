@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.6.0;
+pragma solidity >=0.8.0;
 
 import "../IYieldSource.sol";
 import "./ERC20Mintable.sol";
@@ -13,6 +13,8 @@ import "./ERC20Mintable.sol";
  */
 contract MockYieldSource is ERC20, IYieldSource {
     ERC20Mintable public token;
+    uint256 public ratePerSecond;
+    uint256 lastYieldTimestamp;
 
     constructor(
         string memory _name,
@@ -20,10 +22,26 @@ contract MockYieldSource is ERC20, IYieldSource {
         uint8 _decimals
     ) ERC20("YIELD", "YLD", 18) {
         token = new ERC20Mintable(_name, _symbol, _decimals);
+        lastYieldTimestamp = block.timestamp;
+    }
+
+    function setRatePerSecond(uint256 _ratePerSecond) external {
+        _mintRate();
+        lastYieldTimestamp = block.timestamp;
+        ratePerSecond = _ratePerSecond;
     }
 
     function yield(uint256 amount) external {
         token.mint(address(this), amount);
+    }
+
+    function _mintRate() internal {
+        uint256 deltaTime = block.timestamp - lastYieldTimestamp;
+        uint256 rateMultiplier = deltaTime * ratePerSecond;
+        uint256 balance = token.balanceOf(address(this));
+        uint256 mint = (rateMultiplier * balance) / 1 ether;
+        token.mint(address(this), mint);
+        lastYieldTimestamp = block.timestamp;
     }
 
     /// @notice Returns the ERC20 asset token used for deposits.
@@ -34,7 +52,8 @@ contract MockYieldSource is ERC20, IYieldSource {
 
     /// @notice Returns the total balance (in asset tokens).  This includes the deposits and interest.
     /// @return The underlying balance of asset tokens.
-    function balanceOfToken(address addr) external view override returns (uint256) {
+    function balanceOfToken(address addr) external override returns (uint256) {
+        _mintRate();
         return sharesToTokens(balanceOf(addr));
     }
 
@@ -42,6 +61,7 @@ contract MockYieldSource is ERC20, IYieldSource {
     /// @param amount The amount of asset tokens to be supplied.  Denominated in `depositToken()` as above.
     /// @param to The user whose balance will receive the tokens
     function supplyTokenTo(uint256 amount, address to) external override {
+        _mintRate();
         uint256 shares = tokensToShares(amount);
         token.transferFrom(msg.sender, address(this), amount);
         _mint(to, shares);
@@ -51,6 +71,7 @@ contract MockYieldSource is ERC20, IYieldSource {
     /// @param amount The amount of asset tokens to withdraw.  Denominated in `depositToken()` as above.
     /// @return The actual amount of interst bearing tokens that were redeemed.
     function redeemToken(uint256 amount) external override returns (uint256) {
+        _mintRate();
         uint256 shares = tokensToShares(amount);
         _burn(msg.sender, shares);
         token.transfer(msg.sender, amount);
