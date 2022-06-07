@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
-const { Contract, ContractFactory } = require('ethers');
 const { getSigners } = ethers;
 
 describe('MockYieldSource', () => {

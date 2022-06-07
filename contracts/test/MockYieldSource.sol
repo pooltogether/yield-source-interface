@@ -14,7 +14,7 @@ import "./ERC20Mintable.sol";
 contract MockYieldSource is ERC20, IYieldSource {
     ERC20Mintable public token;
     uint256 public ratePerSecond;
-    uint256 lastYieldTimestamp;
+    uint256 public lastYieldTimestamp;
 
     constructor(
         string memory _name,
