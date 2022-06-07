@@ -6,23 +6,28 @@
   "scripts": {
     "compile": "hardhat compile",
     "clean": "rm -rf artifacts cache abis",
+    "coverage": "hardhat coverage",
+    "coverage:file": "hardhat coverage --testfiles",
     "format": "prettier --config .prettierrc --write \"**/*.{ts,js}\" \"contracts/**/*.sol\"",
     "format:file": "prettier --config .prettierrc --write",
     "hint": "solhint \"contracts/**/*.sol\"",
     "prepack": "yarn clean && hardhat compile",
-    "postpublish": "PACKAGE_VERSION=$(./scripts/package-version.sh) && git tag -ae v$PACKAGE_VERSION && git push --tags"
+    "postpublish": "PACKAGE_VERSION=$(./scripts/package-version.sh) && git tag -ae v$PACKAGE_VERSION && git push --tags",
+    "test": "hardhat test"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
     "chai": "^4.3.6",
+    "ethereum-waffle": "3.4.4",
     "ethers": "^5.6.4",
     "hardhat": "2.6.5",
     "hardhat-abi-exporter": "2.3.0",
     "husky": "8.0.1",
     "prettier": "2.4.1",
     "prettier-plugin-solidity": "1.0.0-beta.18",
-    "solhint": "3.3.6"
+    "solhint": "3.3.6",
+    "solidity-coverage": "0.7.21"
   },
   "files": [
     "LICENSE",
@@ -33,6 +38,7 @@
     "deploy/**"
   ],
   "dependencies": {
+    "@openzeppelin/contracts": "4.6.0",
     "hardhat-deploy": "^0.11.4",
     "hardhat-deploy-ethers": "^0.3.0-beta.13"
   }

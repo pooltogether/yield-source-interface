@@ -2,6 +2,7 @@
 crytic-export
 cache
 .cache-openzeppelin
+abis
 artifacts
 .history
 build
@@ -20,3 +21,4 @@ deployments/local*
 Networks.md
 deployments/fork*
 crytic-export
+.vscode
