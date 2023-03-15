@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
-const { Contract, ContractFactory } = require('ethers');
 const { getSigners } = ethers;
 
 describe('MockYieldSource', () => {
@@ -22,6 +21,10 @@ describe('MockYieldSource', () => {
     });
 
     describe('setRatePerSecond', () => {
+        beforeEach(async () => {
+            await token.grantRole(token.MINTER_ROLE(), mockYieldSource.address);
+        });
+
         it('should set the rate', async () => {
             const actualRate = ethers.utils.parseEther('0.01');
             await mockYieldSource.setRatePerSecond(actualRate);

@@ -14,15 +14,18 @@ import "./ERC20Mintable.sol";
 contract MockYieldSource is ERC20, IYieldSource {
     ERC20Mintable public token;
     uint256 public ratePerSecond;
-    uint256 lastYieldTimestamp;
+    uint256 public lastYieldTimestamp;
+
+    uint8 internal _decimals;
 
     constructor(
         string memory _name,
         string memory _symbol,
-        uint8 _decimals
-    ) ERC20("YIELD", "YLD", 18) {
-        token = new ERC20Mintable(_name, _symbol, _decimals);
+        uint8 decimals_
+    ) ERC20("YIELD", "YLD") {
+        token = new ERC20Mintable(_name, _symbol, decimals_, msg.sender);
         lastYieldTimestamp = block.timestamp;
+        _decimals = decimals_;
     }
 
     function setRatePerSecond(uint256 _ratePerSecond) external {
@@ -42,6 +45,10 @@ contract MockYieldSource is ERC20, IYieldSource {
         uint256 mint = (rateMultiplier * balance) / 1 ether;
         token.mint(address(this), mint);
         lastYieldTimestamp = block.timestamp;
+    }
+
+    function decimals() public view override returns (uint8) {
+        return _decimals;
     }
 
     /// @notice Returns the ERC20 asset token used for deposits.

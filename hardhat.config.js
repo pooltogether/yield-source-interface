@@ -1,4 +1,5 @@
 require('hardhat-abi-exporter');
+require('solidity-coverage');
 require('hardhat-deploy-ethers');
 
 /**
